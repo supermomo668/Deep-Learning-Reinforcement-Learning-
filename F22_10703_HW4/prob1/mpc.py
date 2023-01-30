@@ -41,6 +41,7 @@ class MPC:
 
         # Set up optimizer
         self.model = model
+        self.criterion = nn.GaussianNLLLoss()
 
         if use_gt_dynamics:
             self.predict_next_state = self.predict_next_state_gt
@@ -153,7 +154,7 @@ class MPC:
         #  both states, actions: (self.popsize * self.num_particles * self.planHorizon, self.state_dim)
         input_SA = torch.cat((states, actions), axis=1)
             # compute delta`
-        mean, logvar = self.model(input_SA)[np.random.choice(range(self.num_nets))]R  # pick from an ensemble
+        mean, logvar = self.model(input_SA)[np.random.choice(range(self.num_nets))]  # pick from an ensemble
             # sample next state
         # torch.Size([1200, 8]) torch.Size([1200, 8])
         distrib = MultivariateNormal(loc=mean, covariance_matrix=torch.diag_embed(torch.exp(logvar)))

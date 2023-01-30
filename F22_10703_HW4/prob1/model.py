@@ -83,20 +83,6 @@ class PENN(nn.Module):
         if not torch.is_tensor(inputs):
             inputs = torch.tensor(inputs, device=self.device, dtype=torch.float)
         return self.networks(inputs)
-        #return [self.get_output(self.networks[i](inputs)) for i in range(self.num_nets)]
-
-    # def get_output(self, output):
-    #     """
-    #     Argument:
-    #       output: the raw output of a single ensemble member
-    #     Return:
-    #       mean and log variance
-    #     """
-    #     mean = output[:, 0:self.state_dim]
-    #     raw_v = output[:, self.state_dim:]
-    #     logvar = self.networks.max_logvar - nn.functional.softplus(self.max_logvar - raw_v)
-    #     logvar = self.networks.min_logvar + nn.functional.softplus(logvar - self.min_logvar)
-    #     return mean, logvar
 
     def get_loss(self, targ, mean, logvar):
         # TODO: write your code here
