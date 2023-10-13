@@ -1,3 +1,5 @@
-# Intro To Deep Reinforcement Learning
+# Deep Reinforcement Learning
+
+Research to Practice
 
 
