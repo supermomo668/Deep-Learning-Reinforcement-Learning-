@@ -33,7 +33,8 @@ def wrap_env(env, save_path=proj_folder/'video'):
 class A2C(object):
     # Implementation of N-step Advantage Actor Critic.
 
-    def __init__(self, actor, actor_lr, N, nA, critic, critic_lr, baseline=False, a2c=True):
+    def __init__(
+            self, actor, actor_lr, N, nA, critic, critic_lr, baseline=False, a2c=True):
         # Note: baseline is true if we use reinforce with baseline
         #       a2c is true if we use a2c else reinforce
         # TODO: Initializes A2C.

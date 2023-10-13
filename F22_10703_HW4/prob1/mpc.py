@@ -41,7 +41,7 @@ class MPC:
 
         # Set up optimizer
         self.model = model
-        self.criterion = nn.GaussianNLLLoss()
+        self.criterion = torch.nn.GaussianNLLLoss()
 
         if use_gt_dynamics:
             self.predict_next_state = self.predict_next_state_gt
